@@ -1,5 +1,6 @@
-# Visualising-homology-search-in-human-cells
+# The dynamics of RAD51 foci formation and elongation in living human cells
 Analysis scripts and object classifiers used in 'Visualising homology search in human cells' by Friskes et al.
+After downloading, place the `.groovy` scripts in `<your-Fiji-folder>\scripts`, and the `.jar` `.class` files in `<your-Fiji-folder>\plugins`. The `.ijm` files can be run from anywhere.
 
 ![image](https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/68109112/15997705-5c62-48b0-8100-3114d625bcae)
 
@@ -35,7 +36,7 @@ After running the `Crop_nuclei_and_objectMaps_for_Ilastik.ijm` macro, use the `S
     https://github.com/user-attachments/assets/dd58467c-4f9f-4935-9e7a-3245dc91a090
 
 4.	`Overlay_cell_tracking_labelmap_for_timelapse_3ch.ijm`: Overlays the nucleus outlines from the tracked labelmap with track numbers on timelapse images; this is useful for visual inspection of the tracking results, as well as for selection of tracked nuclei for downstream analysis.
-5.	zeropad_tracks_and_combine_registration.ijm:
+5.	`zeropad_tracks_and_combine_registration.ijm`:
     - Fix file naming by trackmate (1 -> 001, etc.)
     - Combine tracked single nuclei and registered single nuclei timelapse images for visualization of the registration results
 
