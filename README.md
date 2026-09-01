@@ -1,5 +1,5 @@
 # The dynamics of RAD51 foci formation and elongation in living human cells
-Analysis scripts and object classifiers used in 'Visualising homology search in human cells' by Friskes et al.
+Analysis scripts and object classifiers used in 'The dynamics of RAD51 foci formation and elongation in living human cells' by Friskes et al., accepted for publication in Nucleic Acids Research. 
 
 **Installation**: Put the `.jar` and `.class` files in `<your-Fiji-folder>\plugins` folder, place the `.groovy` and '.ijm' scripts _in a (new) subfolder_ of `<your-Fiji-folder>\scripts` (e.g. `C:\Fiji\scripts\NKI`) and (re)start Fiji. (Note: The Turboreg and HyperStackReg files are copies obtained from https://bigwww.epfl.ch/thevenaz/turboreg/ and https://github.com/ved-sharma/HyperStackReg, respectively).
 
