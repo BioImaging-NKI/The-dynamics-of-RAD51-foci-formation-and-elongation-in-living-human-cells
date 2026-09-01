@@ -14,13 +14,12 @@ Ensure you have the following software and plugins installed:
 - **(Huygens Professional)** Optional — For deconvolution of 3D timelapse images.
 
 **Required Fiji/ImageJ Plugins:**
-- **Bio-Formats** — For reading .czi and other microscopy image formats (included by default in Fiji)
 - **TrackMate** — For nuclei and foci tracking. Install via `Help > Update... > Manage UpdateSites` and enable "TrackMate"
 - **StarDist** — For 2D/3D nuclei segmentation. Install via `Help > Update... > Manage UpdateSites` and enable "StarDist"
 - **LabKit** — For manual pixel classification. Install via `Help > Update... > Segmentation > LabKit`
 - **CLIJ** — For GPU-accelerated image processing. Install via `Help > Update... > Manage UpdateSites` and enable "CLIJ" and "CLIJ2"
 - **MorphoLibJ** — For morphological operations and shape analysis. Install via `Help > Update... > Manage UpdateSites` and enable "IJPB-Plugins"
-- **HyperStackReg** — For image registration and rigid body transformation. Install via `Help > Update... > Manage UpdateSites` and enable "HyperStackReg"
+- **StackReg and HyperStackReg** — For image registration and rigid body transformation. HyperStackReg does not have an UpdateSite; install manually by downloading the .jar file from the [ImageJ wiki](https://imagej.net/plugins/hyperstack-reg) and placing it in the `plugins` folder.
 
 # 1. Analysis of foci/structures in fixed cells (3D)
 
