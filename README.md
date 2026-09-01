@@ -16,7 +16,7 @@ Ensure you have the following software and plugins installed:
 **Required Fiji/ImageJ Plugins:**
 - **Bio-Formats** — For reading .czi and other microscopy image formats (included by default in Fiji)
 - **TrackMate** — For nuclei and foci tracking. Install via `Help > Update... > Manage UpdateSites` and enable "TrackMate"
-- **StarDist** — For 2D/3D nuclei segmentation. Install via Help > Update... > Manage UpdateSites` and enable "StarDist"
+- **StarDist** — For 2D/3D nuclei segmentation. Install via `Help > Update... > Manage UpdateSites` and enable "StarDist"
 - **LabKit** — For manual pixel classification. Install via `Help > Update... > Segmentation > LabKit`
 - **CLIJ** — For GPU-accelerated image processing. Install via `Help > Update... > Manage UpdateSites` and enable "CLIJ" and "CLIJ2"
 - **MorphoLibJ** — For morphological operations and shape analysis. Install via `Help > Update... > Manage UpdateSites` and enable "IJPB-Plugins"
@@ -25,52 +25,52 @@ Ensure you have the following software and plugins installed:
 # 1. Analysis of foci/structures in fixed cells (3D)
 
 ### Analysis Workflow
-1. Channel Extraction: Use the `Split_multiseries_files_and_z-project.ijm` macro to extract the single foci channel. Save the Z-stacks, including a maximum projection, in a separate folder for ease of[...]
-2. 3D Nuclear Segmentation: Apply the `segment_3D_objects.ijm` macro to the single-channel images with Z-stacks to perform 3D segmentation of the nuclei. Define a single setting and apply to all i[...]
-3. Crop for Ilastik: Execute the `Crop_nuclei_and_objectMaps_for_Ilastik.ijm` macro to isolate individual nuclei to remove non-specific staining outside the nucleus.
-4. Ilastik Training: Load the cropped images into Ilastik and train the program using several images. 
-5. Batch Analysis in Ilastik: Run the trained model on all images. Make sure that the raw and corresponding segmented images are loaded c
-6. Result Compilation: Use the `Append_result_files.ijm` macro to combine individual result files for subsequent analysis.
+1. **Channel Extraction**: Use the `Split_multiseries_files_and_z-project.ijm` macro to extract the single foci channel. Save the Z-stacks, including a maximum projection, in a separate folder for ease of processing.
+2. **3D Nuclear Segmentation**: Apply the `segment_3D_objects.ijm` macro to the single-channel images with Z-stacks to perform 3D segmentation of the nuclei. Define a single setting and apply to all images in your dataset.
+3. **Crop for Ilastik**: Execute the `Crop_nuclei_and_objectMaps_for_Ilastik.ijm` macro to isolate individual nuclei and remove non-specific staining outside the nucleus.
+4. **Ilastik Training**: Load the cropped images into Ilastik and train the pixel classifier using several representative images with different staining patterns.
+5. **Batch Analysis in Ilastik**: Run the trained model on all images. Ensure that both raw and segmented images are properly loaded and aligned.
+6. **Result Compilation**: Use the `Append_result_files.ijm` macro to combine individual result files for subsequent analysis in R or Python.
 
 ### Additional Note for 2D Analysis (Skeleton Length):
-After running the `Crop_nuclei_and_objectMaps_for_Ilastik.ijm` macro, use the `Split_multiseries_files_and_z-project.ijm` macro again to generate Z-projections of the nuclei. (2D analysis in Ilast[...]
+After running the `Crop_nuclei_and_objectMaps_for_Ilastik.ijm` macro, use the `Split_multiseries_files_and_z-project.ijm` macro again to generate Z-projections of the nuclei for 2D analysis in Ilastik. This approach allows for measuring skeleton length and other 2D morphological features.
 
 
 # 2. Analysis of structures in timelapse live-cell images (3D+t / 2D+t)
 
 ### Analysis Workflow:
-1.	(Optional) Deconvolve 3D timelapse images (Huygens Proffesional)
-2.	`Split_multiseries_files_and_z-project.ijm`: Read .czi files with Bio-Formats and create maximum intensity z-projection timelapse images.
-3.	`Preprocess_segment_track_extract_and_register_nuclei.ijm`: This macro performs preprocessing, nuclei segmentation, nuclei tracking and image registration to stabilize the movement of individua[...]
+1. **(Optional) Deconvolve 3D timelapse images** — Use Huygens Professional for deconvolution to improve signal-to-noise ratio in raw 3D timelapse data.
+2. **`Split_multiseries_files_and_z-project.ijm`** — Read .czi files with Bio-Formats and create maximum intensity z-projection timelapse images for initial inspection and preprocessing.
+3. **`Preprocess_segment_track_extract_and_register_nuclei.ijm`** — This macro performs preprocessing, nuclei segmentation, nuclei tracking, and image registration to stabilize the movement of individual nuclei across time points.
     - Subtract median (static background, moving nuclei).
     - Add all channels (no nuclei marker, so we need all the photons we can get from the foci channels), remove outliers (the foci) and segment nuclei with StarDist for all time frames.
-    - Run Trackmate on the resulting labelmap, resulting in a 'tracked labelmap'.
+    - Run TrackMate on the resulting labelmap, resulting in a 'tracked labelmap'.
     - Extract single nuclei tracks from the original timelapses.
     - Register the single nuclei images using a rigid body transformation to correct for nuclei rotation and drift (HyperStackReg plugin).
-    For each nucleus, single nuclei registered tracked images on a black background (extracted from the deconvolved images) are saved, as well as a full-image tracked labelmap.
+    - For each nucleus, single nuclei registered tracked images on a black background (extracted from the deconvolved images) are saved, as well as a full-image tracked labelmap.
 
-  	https://github.com/user-attachments/assets/c087e09e-0d90-440b-817d-82b74cd24343
+    https://github.com/user-attachments/assets/c087e09e-0d90-440b-817d-82b74cd24343
 
     https://github.com/user-attachments/assets/dd58467c-4f9f-4935-9e7a-3245dc91a090
 
-4.	`Overlay_cell_tracking_labelmap_for_timelapse_3ch.ijm`: Overlays the nucleus outlines from the tracked labelmap with track numbers on timelapse images; this is useful for visual inspection of t[...]
-5.	`zeropad_tracks_and_combine_registration.ijm`:
-    - Fix file naming by trackmate (1 -> 001, etc.)
+4. **`Overlay_cell_tracking_labelmap_for_timelapse_3ch.ijm`** — Overlays the nucleus outlines from the tracked labelmap with track numbers on timelapse images. This is useful for visual inspection of tracking quality and verification that individual nuclei are correctly identified across frames.
+5. **`zeropad_tracks_and_combine_registration.ijm`** — Performs two tasks:
+    - Fix file naming by TrackMate (1 → 001, etc.) for consistent sorting
     - Combine tracked single nuclei and registered single nuclei timelapse images for visualization of the registration results
 
     https://github.com/user-attachments/assets/8c55ddfa-ae35-4e34-8655-a47049067d1e
 
-6.	`Segment_with_labkit_and_merge.ijm`: Segment 53BP1 foci or RAD51 structures with LabKit pixel classifier, resulting in a binary timelapse or a 3D z-stack mask, depending on the input. It runs a[...]
-7.	For timelapse images: run TrackMate on the timelapse mask from Labkit to follow individual foci/structures within each nucleus.
+6. **`Segment_with_labkit_and_merge.ijm`** — Segment 53BP1 foci or RAD51 structures with LabKit pixel classifier, resulting in a binary timelapse or a 3D z-stack mask depending on the input data. This macro includes post-processing steps such as morphological filtering and connectivity analysis.
+7. **For timelapse images**: Run TrackMate on the timelapse mask from LabKit to follow individual foci/structures within each nucleus across time points.
     
     <img width="240" height="240" alt="Path from ID2695 to ID2585_track4-3" src="https://github.com/user-attachments/assets/87cc3e61-0f8e-4fb5-be2e-d4708cb5aabe" />
     
-8.	For 3D (fixed images) Connected component analysis on the segmented masks from Labkit to create 3D object maps, plus maximum intensity projections for 2D analysis. Optionally use `Split_multise[...]
-9.	`Skeletonize_and_measure_labels.ijm`: Skeletonize the label images with structures (2D / 3D), and measure length and shape features using CLIJ and MorphoLibJ. Due to the width of the structures[...]
-    - For every endpoint the shortest distance to the edge of the label is added to the skeleton length.
+8. **For 3D (fixed images)**: Perform connected component analysis on the segmented masks from LabKit to create 3D object maps, plus maximum intensity projections for 2D analysis. Optionally use `Split_multiseries_files_and_z-project.ijm` to generate projections from different axes.
+9. **`Skeletonize_and_measure_labels.ijm`** — Skeletonize the label images with structures (2D or 3D) and measure length and shape features using CLIJ and MorphoLibJ. Due to the width of the structures, skeleton length is calculated by adding the distance from each endpoint to the edge of the object:
+    - For every endpoint, the shortest distance to the edge of the label is added to the skeleton length.
     - For structures with only 1 endpoint (near circles or spheres), this distance is added twice.
-    <br>
+    
     <img width="400" alt="Skeletonized_objects_2D" src="https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/83e1da34-73a9-4893-98c9-658844dd97ee" />
     <img width="675" alt="image" src="https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/009c15a1-c80c-486a-a270-4782032316d1" />
 
-10. `Append_result_files.ijm`: combine individual results files for subsequent analysis.
+10. **`Append_result_files.ijm`** — Combine individual results files from all nuclei into a single consolidated results file for subsequent statistical analysis and visualization.
