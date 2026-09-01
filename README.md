@@ -1,32 +1,26 @@
 # The dynamics of RAD51 foci formation and elongation in living human cells
 Analysis scripts and object classifiers used in 'The dynamics of RAD51 foci formation and elongation in living human cells' by Friskes et al., accepted for publication in Nucleic Acids Research. 
 
-**Installation**: Put the `.jar` and `.class` files in `<your-Fiji-folder>\plugins` folder, place the `.groovy` and '.ijm' scripts _in a (new) subfolder_ of `<your-Fiji-folder>\scripts` (e.g. `C:\Fiji\scripts\RAD51_Analysis`).
-
 ![image](https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/68109112/15997705-5c62-48b0-8100-3114d625bcae)
 
-## Requirements
 
-Before using these analysis scripts, ensure you have the following software and plugins installed:
+## Installation and requirements
+Put the `.jar` and `.class` files in `<your-Fiji-folder>\plugins` folder, place the `.groovy` and '.ijm' scripts _in a (new) subfolder_ of `<your-Fiji-folder>\scripts` (e.g. `C:\Fiji\scripts\RAD51_Analysis`).
 
-**Core Software:**
-- **Fiji (ImageJ)** — Version 1.52 or later. Download from [https://fiji.sc/](https://fiji.sc/)
-- **Ilastik** — Version 1.3.3 or later for pixel classification. Download from [https://www.ilastik.org/](https://www.ilastik.org/)
-- **Huygens Professional** (optional) — For deconvolution of 3D timelapse images. Contact Huygens for installation details.
+Ensure you have the following software and plugins installed:
+
+- **[Fiji (ImageJ)](https://fiji.sc/)** — Version 2.16/1.52 or later.
+- **[Ilastik](https://www.ilastik.org/)** — Version 1.3.3 or later for pixel classification.
+- **(Huygens Professional)** Optional — For deconvolution of 3D timelapse images.
 
 **Required Fiji/ImageJ Plugins:**
 - **Bio-Formats** — For reading .czi and other microscopy image formats (included by default in Fiji)
-- **TrackMate** — For nuclei and foci tracking. Install via `Plugins > Manage UpdateSites` and enable "TrackMate"
-- **StarDist** — For 2D/3D nuclei segmentation. Install via `Plugins > Manage UpdateSites` and enable "StarDist"
-- **LabKit** — For manual pixel classification. Install via `Plugins > Segmentation > LabKit`
-- **CLIJ** — For GPU-accelerated image processing. Install via `Plugins > Manage UpdateSites` and enable "CLIJ" and "CLIJ2"
-- **MorphoLibJ** — For morphological operations and shape analysis. Install via `Plugins > Manage UpdateSites` and enable "IJPB-Plugins"
-- **HyperStackReg** — For image registration and rigid body transformation. Install via `Plugins > Manage UpdateSites` and enable "HyperStackReg"
-
-**System Requirements:**
-- **RAM:** Minimum 16 GB; 32 GB or more recommended for large 3D+t datasets
-- **GPU (optional but recommended):** NVIDIA GPU with CUDA support for faster CLIJ processing
-- **Storage:** Sufficient disk space for raw image data and intermediate processing files (typically 10–100 GB per experiment)
+- **TrackMate** — For nuclei and foci tracking. Install via `Help > Update... > Manage UpdateSites` and enable "TrackMate"
+- **StarDist** — For 2D/3D nuclei segmentation. Install via Help > Update... > Manage UpdateSites` and enable "StarDist"
+- **LabKit** — For manual pixel classification. Install via `Help > Update... > Segmentation > LabKit`
+- **CLIJ** — For GPU-accelerated image processing. Install via `Help > Update... > Manage UpdateSites` and enable "CLIJ" and "CLIJ2"
+- **MorphoLibJ** — For morphological operations and shape analysis. Install via `Help > Update... > Manage UpdateSites` and enable "IJPB-Plugins"
+- **HyperStackReg** — For image registration and rigid body transformation. Install via `Help > Update... > Manage UpdateSites` and enable "HyperStackReg"
 
 # 1. Analysis of foci/structures in fixed cells (3D)
 
