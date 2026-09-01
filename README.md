@@ -14,11 +14,11 @@ Ensure you have the following software and plugins installed:
 - **(Huygens Professional)** Optional — For deconvolution of 3D timelapse images.
 
 **Required Fiji/ImageJ Plugins:**
-- **TrackMate** — For nuclei and foci tracking. Install via `Help > Update... > Manage UpdateSites` and enable "TrackMate"
-- **StarDist** — For 2D/3D nuclei segmentation. Install via `Help > Update... > Manage UpdateSites` and enable "StarDist"
-- **LabKit** — For manual pixel classification. Install via `Help > Update... > Segmentation > LabKit`
-- **CLIJ** — For GPU-accelerated image processing. Install via `Help > Update... > Manage UpdateSites` and enable "CLIJ" and "CLIJ2"
-- **MorphoLibJ** — For morphological operations and shape analysis. Install via `Help > Update... > Manage UpdateSites` and enable "IJPB-Plugins"
+- **TrackMate** — Nuclei and foci tracking. Install via `Help > Update... > Manage Update Sites` and enable "TrackMate"
+- **StarDist** — 2D/3D nuclei segmentation. Install via `Help > Update... > Manage Update Sites` and enable "StarDist"
+- **LabKit** — Pixel classification. Install via `Help > Update... > Segmentation > LabKit`
+- **CLIJ** — GPU-accelerated image processing. Install via `Help > Update... > Manage Update Sites` and enable "CLIJ" and "CLIJ2"
+- **MorphoLibJ** — Morphological operations and shape analysis. Install via `Help > Update... > Manage Update Sites` and enable "IJPB-Plugins"
 - **StackReg/TurboReg and HyperStackReg** — For image registration and rigid body transformation. The compiled `.jar` (TurboReg) and `.class` (HyperStackReg) files are included in this repositor[...]
 
 # 1. Analysis of foci/structures in fixed cells (3D)
@@ -69,8 +69,7 @@ After running the `Crop_nuclei_and_objectMaps_for_Ilastik.ijm` macro, use the `S
     - For every endpoint, the shortest distance to the edge of the label is added to the skeleton length.
     - For structures with only 1 endpoint (near circles or spheres), this distance is added twice.
     
-    ![Skeletonized_objects_2D](https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/68109112/15997705-5c62-48b0-8100-3114d625bcae)
+    <img width="400" alt="Skeletonized_objects_2D" src="https://github.com/user-attachments/assets/83e1da34-73a9-4893-98c9-658844dd97ee" />
+    <img width="675" alt="image" src="https://github.com/user-attachments/assets/009c15a1-c80c-486a-a270-4782032316d1" />
     
-    ![image](https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/68109112/15997705-5c62-48b0-8100-3114d625bcae)
-
 10. **`Append_result_files.ijm`** — Combine individual results files from all nuclei into a single consolidated results file for subsequent statistical analysis and visualization.
