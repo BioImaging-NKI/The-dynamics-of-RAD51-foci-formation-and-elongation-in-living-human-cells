@@ -19,7 +19,7 @@ Ensure you have the following software and plugins installed:
 - **LabKit** — For manual pixel classification. Install via `Help > Update... > Segmentation > LabKit`
 - **CLIJ** — For GPU-accelerated image processing. Install via `Help > Update... > Manage UpdateSites` and enable "CLIJ" and "CLIJ2"
 - **MorphoLibJ** — For morphological operations and shape analysis. Install via `Help > Update... > Manage UpdateSites` and enable "IJPB-Plugins"
-- **StackReg and HyperStackReg** — For image registration and rigid body transformation. HyperStackReg does not have an UpdateSite; install manually by downloading the .jar file from the [ImageJ wiki](https://imagej.net/plugins/hyperstack-reg) and placing it in the `plugins` folder.
+- **StackReg/TurboReg and HyperStackReg** — For image registration and rigid body transformation. The compiled `.jar` (TurboReg) and `.class` (HyperStackReg) files are included in this repository. HyperStackReg is developed by Ved Sharma (https://github.com/ved-sharma/HyperStackReg). Please note that TurboReg has a specific licensing requirement for academic use (see [TurboReg licensing](http://bigwww.epfl.ch/thevenaz/turboreg/)). Place these files directly in the `plugins` folder.
 
 # 1. Analysis of foci/structures in fixed cells (3D)
 
