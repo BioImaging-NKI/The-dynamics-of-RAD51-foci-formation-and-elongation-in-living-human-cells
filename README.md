@@ -13,13 +13,15 @@ Ensure you have the following software and plugins installed:
 - **[Ilastik](https://www.ilastik.org/)** — Version 1.3.3 or later for pixel classification.
 - **(Huygens Professional)** Optional — For deconvolution of 3D timelapse images.
 
-**Required Fiji/ImageJ Plugins:**
-- **TrackMate** — Nuclei and foci tracking. Install via `Help > Update... > Manage Update Sites` and enable "TrackMate"
-- **StarDist** — 2D/3D nuclei segmentation. Install via `Help > Update... > Manage Update Sites` and enable "StarDist"
-- **LabKit** — Pixel classification. Install via `Help > Update... > Segmentation > LabKit`
-- **CLIJ** — GPU-accelerated image processing. Install via `Help > Update... > Manage Update Sites` and enable "CLIJ" and "CLIJ2"
-- **MorphoLibJ** — Morphological operations and shape analysis. Install via `Help > Update... > Manage Update Sites` and enable "IJPB-Plugins"
-- **StackReg/TurboReg and HyperStackReg** — For image registration and rigid body transformation. The compiled `.jar` (TurboReg) and `.class` (HyperStackReg) files are included in this repository.
+**Required Fiji/ImageJ Plugins (Install Update Sites via `Help > Update... > Manage Update Sites`**
+- **TrackMate** — Nuclei and foci tracking
+- **StarDist** — 2D nuclei segmentation
+- **CSBDeep** — Helper for StarDist
+- **LabKit** — Pixel classification
+- **CLIJ** — GPU-accelerated image processing
+- **CLIJ2** — GPU-accelerated image processing
+- **IJPB-Plugins** — MorphoLibJ: Morphological operations and shape analysis
+- **StackReg/TurboReg and HyperStackReg** — Image registration and rigid body transformation. The compiled `.jar` (StackReg and TurboReg) and `.class` files are included in this repository. (Note that they are obtained from https://bigwww.epfl.ch/thevenaz/stackreg/, https://bigwww.epfl.ch/thevenaz/turboreg/ and https://github.com/ved-sharma/HyperStackReg, respectively.)
 
 # 1. Analysis of foci/structures in fixed cells (3D)
 
