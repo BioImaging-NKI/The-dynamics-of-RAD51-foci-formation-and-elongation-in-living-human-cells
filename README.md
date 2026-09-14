@@ -1,5 +1,5 @@
 # The dynamics of RAD51 foci formation and elongation in living human cells
-Analysis scripts and object classifiers used in 'The dynamics of RAD51 foci formation and elongation in living human cells' by Friskes et al., accepted for publication in Nucleic Acids Research. 
+Analysis scripts and object classifiers used in Friskes et al, 'The dynamics of RAD51 foci formation and elongation in living human cells', Nucleic Acids Research, Volume 54, Issue 17, 23 September 2026, https://doi.org/10.1093/nar/gkag863.
 
 ![image](https://github.com/BioImaging-NKI/Visualising-homology-search-in-human-cells/assets/68109112/15997705-5c62-48b0-8100-3114d625bcae)
 
